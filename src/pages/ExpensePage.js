@@ -1,3 +1,4 @@
+import React from "react";
 import ExpenseForm from "../components/ExpenseForm";
 import ExpenseList from "../components/ExpenseList";
 
@@ -9,3 +10,5 @@ function ExpensePage() {
     </div>
   );
 }
+
+export default ExpensePage;
