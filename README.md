@@ -1,3 +1,7 @@
+#Stack:
+- ReactJS
+- TailwindCSS
+
 #React dependencies:
 - Redux Toolkit
 - classnames
