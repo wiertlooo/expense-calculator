@@ -12,4 +12,8 @@ export const store = configureStore({
 
 setupListeners(store.dispatch);
 
-export const { useFetchExpensesQuery } = expensesApi;
+export const {
+  useFetchExpensesQuery,
+  useAddExpenseMutation,
+  useRemoveExpenseMutation,
+} = expensesApi;
