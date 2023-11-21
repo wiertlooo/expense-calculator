@@ -1,3 +1,16 @@
 {
-    
+    "expenses": [
+        {
+            "id": 1,
+            "date": "2023-11-21",
+            "title": "food",
+            "value": 24.41
+        },
+        {
+            "id": 2,
+            "date": "2023-11-21",
+            "title": "party",
+            "value": 230.21
+        }
+    ]
 }
