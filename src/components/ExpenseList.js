@@ -1,8 +1,8 @@
 import { useFetchExpensesQuery } from "../store";
 import ExpenseListItem from "./ExpenseListItem";
 
-function ExpenseList() {
-  const { data, error, isFetching } = useFetchExpensesQuery();
+function ExpenseList({ date }) {
+  const { data, error, isFetching } = useFetchExpensesQuery(date);
   console.log(data);
 
   let content;

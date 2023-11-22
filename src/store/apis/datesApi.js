@@ -1,13 +1,13 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
-const expensesApi = createApi({
-  reducerPath: "expenses",
+const datesApi = createApi({
+  reducerPath: "dates",
   baseQuery: fetchBaseQuery({
     baseUrl: "http://localhost:3005",
   }),
   endpoints(builder) {
     return {
-      fetchExpenses: builder.query({
+      fetchDates: builder.query({
         // providesTags: (result, error, expense) => {
         //   const tags = result.map((expense) => {
         //     return { type: "Expense", id: expense.id };
@@ -15,11 +15,8 @@ const expensesApi = createApi({
         //   tags.push({ type: "Expenses" });
         //   return tags;
         // },
-        query: (date) => ({
-          url: "/expenses",
-          params: {
-            dateId: date.id,
-          },
+        query: () => ({
+          url: "/dates",
           method: "GET",
         }),
       }),
@@ -27,14 +24,12 @@ const expensesApi = createApi({
         // invalidatesTags: (result, error, expense) => {
         //   return [{ type: "Expenses" }];
         // },
-        query: (date, expense) => ({
+        query: (date) => ({
           method: "POST",
-          url: "/expenses",
+          url: "/dates",
           body: {
-            id: expense.id,
-            title: expense.title,
-            value: expense.value,
-            dateId: date.id,
+            id: date.id,
+            date: date.date,
           },
         }),
       }),
@@ -42,8 +37,8 @@ const expensesApi = createApi({
         // invalidatesTags: (result, error, expense) => {
         //   return [{ type: "Expense", id: expense.id }];
         // },
-        query: (expense) => ({
-          url: `/expenses/${expense.id}`,
+        query: (date) => ({
+          url: `/expenses/${date.id}`,
           method: "DELETE",
         }),
       }),
@@ -51,5 +46,5 @@ const expensesApi = createApi({
   },
 });
 
-export const { useFetchExpensesQuery, useAddExpenseMutation } = expensesApi;
-export { expensesApi };
+export const { useFetchDatsesQuery, useAddDateMutation } = datesApi;
+export { datesApi };
