@@ -38,7 +38,7 @@ const datesApi = createApi({
           return [{ type: "Date", id: date.id }];
         },
         query: (date) => ({
-          url: `/expenses/${date.id}`,
+          url: `/dates/${date.id}`,
           method: "DELETE",
         }),
       }),
