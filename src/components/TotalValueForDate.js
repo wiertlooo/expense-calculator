@@ -2,7 +2,6 @@ import { useFetchExpensesQuery } from "../store";
 
 function TotalValueForDate({ date }) {
   const { data, isFetching, error } = useFetchExpensesQuery(date);
-  console.log(data);
 
   if (isFetching) {
     return <div>Data loading...</div>;
