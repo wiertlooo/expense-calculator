@@ -3,7 +3,6 @@ import ExpenseListItem from "./ExpenseListItem";
 
 function ExpenseList({ date }) {
   const { data, error, isFetching } = useFetchExpensesQuery(date);
-  console.log(data);
 
   let content;
   if (isFetching) {

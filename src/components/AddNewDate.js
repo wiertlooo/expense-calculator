@@ -6,23 +6,27 @@ function AddNewDate() {
 
   const handleSubmit = (value, { resetForm }) => {
     addDate(value);
-    console.log(value);
     resetForm();
   };
   return (
-    <div>
+    <div className="flex items-center">
       <Formik
         initialValues={{
           date: "",
         }}
         onSubmit={handleSubmit}
       >
-        <Form>
-          <label>Choose date:</label>
-          <Field type="date" id="date" name="date" />
+        <Form className="flex flex-row mx-auto items-center">
+          <label className="mb-1 font-bold text-2xl">Choose date:</label>
+          <Field
+            type="date"
+            id="date"
+            name="date"
+            className="p-2 border rounded-md mb-1"
+          />
           <button
             type="submit"
-            className="w-full bg-green-500 text-white py-2 px-4 rounded-md hover:bg-green-600"
+            className="bg-green-500 text-white py-1 px-2 rounded-md hover:bg-green-600"
           >
             Submit
           </button>

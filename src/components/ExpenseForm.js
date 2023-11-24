@@ -2,10 +2,14 @@ import React from "react";
 import { Formik, Field, Form } from "formik";
 import { useAddExpenseMutation } from "../store";
 
-function ExpenseForm() {
-  const [addExpense, results] = useAddExpenseMutation();
+function ExpenseForm({ date }) {
+  const [addExpense, results] = useAddExpenseMutation(date);
   const handleSubmit = (values, { resetForm }) => {
-    addExpense(values);
+    addExpense({
+      dateId: date.id,
+      title: values.title,
+      value: values.value,
+    });
     resetForm();
   };
   return (

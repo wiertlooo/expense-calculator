@@ -8,22 +8,22 @@ const datesApi = createApi({
   endpoints(builder) {
     return {
       fetchDates: builder.query({
-        // providesTags: (result, error, expense) => {
-        //   const tags = result.map((expense) => {
-        //     return { type: "Expense", id: expense.id };
-        //   });
-        //   tags.push({ type: "Expenses" });
-        //   return tags;
-        // },
+        providesTags: (result, error) => {
+          const tags = result.map((date) => {
+            return { type: "Date", id: date.id };
+          });
+          tags.push({ type: "Dates" });
+          return tags;
+        },
         query: () => ({
           url: "/dates",
           method: "GET",
         }),
       }),
       addDate: builder.mutation({
-        // invalidatesTags: (result, error, expense) => {
-        //   return [{ type: "Expenses" }];
-        // },
+        invalidatesTags: (result, error, expense) => {
+          return [{ type: "Dates" }];
+        },
         query: (date) => ({
           method: "POST",
           url: "/dates",
@@ -34,9 +34,9 @@ const datesApi = createApi({
         }),
       }),
       removeDate: builder.mutation({
-        // invalidatesTags: (result, error, expense) => {
-        //   return [{ type: "Expense", id: expense.id }];
-        // },
+        invalidatesTags: (result, error, date) => {
+          return [{ type: "Date", id: date.id }];
+        },
         query: (date) => ({
           url: `/expenses/${date.id}`,
           method: "DELETE",

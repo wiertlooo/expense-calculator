@@ -17,9 +17,9 @@ function DateList() {
       <div>
         {data.map((date) => {
           return (
-            <div>
+            <div key={date.id}>
               <DatePanel date={date}>
-                <ExpenseList key={date.id} date={date} />
+                <ExpenseList date={date} />
               </DatePanel>
             </div>
           );
