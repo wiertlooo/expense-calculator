@@ -19,11 +19,11 @@ function DatePanel({ date, children }) {
     <div>
       <div>Expenses in {date.date}</div>
       <button onClick={handleModal}>Add Expense</button>
-      {(
+      {showModal && (
         <Modal>
           <ExpenseForm />
         </Modal>
-      ) && showModal}
+      )}
       <div onClick={handleExpanding}>
         {" "}
         {expanded ? <GoArrowDown /> : <GoArrowLeft />}
