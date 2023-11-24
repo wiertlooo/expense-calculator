@@ -1,5 +1,38 @@
 import React from "react";
+import { useFetchDatesQuery } from "../store";
+import ExpenseList from "./ExpenseList";
+import AddNewDate from "./AddNewDate";
+import DatePanel from "./DatePanel";
 
-function DateList() {}
+function DateList() {
+  const { data, error, isFetching } = useFetchDatesQuery();
+
+  let content;
+  if (isFetching) {
+    content = <div>Loading...</div>;
+  } else if (error) {
+    content = <div>Error occured when fetching dates data. :</div>;
+  } else {
+    content = (
+      <div>
+        {data.map((date) => {
+          return (
+            <div>
+              <DatePanel date={date}>
+                <ExpenseList key={date.id} date={date} />
+              </DatePanel>
+            </div>
+          );
+        })}
+      </div>
+    );
+  }
+  return (
+    <div>
+      <AddNewDate />
+      {content}
+    </div>
+  );
+}
 
 export default DateList;

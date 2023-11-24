@@ -20,7 +20,7 @@ const datesApi = createApi({
           method: "GET",
         }),
       }),
-      addExpense: builder.mutation({
+      addDate: builder.mutation({
         // invalidatesTags: (result, error, expense) => {
         //   return [{ type: "Expenses" }];
         // },
@@ -33,7 +33,7 @@ const datesApi = createApi({
           },
         }),
       }),
-      removeExpense: builder.mutation({
+      removeDate: builder.mutation({
         // invalidatesTags: (result, error, expense) => {
         //   return [{ type: "Expense", id: expense.id }];
         // },

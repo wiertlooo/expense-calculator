@@ -15,7 +15,6 @@ function ExpenseForm() {
         initialValues={{
           value: 0,
           title: "",
-          date: "",
         }}
         onSubmit={handleSubmit}
       >
@@ -45,20 +44,6 @@ function ExpenseForm() {
               type="text"
               id="title"
               name="title"
-              className="w-full p-2 border rounded-md"
-            />
-          </div>
-          <div className="w-full md:w-1/3 px-2 mb-4">
-            <label
-              htmlFor="date"
-              className="block text-sm font-medium text-gray-600 mb-1"
-            >
-              Date:
-            </label>
-            <Field
-              type="date"
-              id="date"
-              name="date"
               className="w-full p-2 border rounded-md"
             />
           </div>

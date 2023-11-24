@@ -1,12 +1,11 @@
 import React from "react";
-import ExpenseForm from "../components/ExpenseForm";
 import ExpenseList from "../components/ExpenseList";
+import DateList from "../components/DateList";
 
 function ExpensePage() {
   return (
     <div>
-      <ExpenseForm />
-      <ExpenseList />
+      <DateList />
     </div>
   );
 }
