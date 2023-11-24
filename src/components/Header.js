@@ -17,11 +17,6 @@ function Header() {
               Expenses
             </Link>
           </li>
-          <li>
-            <Link to="/statistics" className="hover:underline">
-              Statistics
-            </Link>
-          </li>
         </ul>
       </nav>
     </header>

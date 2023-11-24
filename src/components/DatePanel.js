@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { GoArrowLeft } from "react-icons/go";
 import { GoArrowDown } from "react-icons/go";
+import { GoPlus } from "react-icons/go";
 import Modal from "./Modal";
 import ExpenseForm from "./ExpenseForm";
 import TotalValueForDate from "./TotalValueForDate";
@@ -39,19 +40,20 @@ function DatePanel({ date, children }) {
           <TotalValueForDate date={date} />
         </div>
         <div className="flex items-end">
-          <button
-            className="bg-blue-500 text-white px-2 py-1 rounded"
-            onClick={handleModal}
-          >
-            Add Expense
-          </button>
+          <div className="text-3xl cursor-pointer" onClick={handleModal}>
+            {" "}
+            <GoPlus />
+          </div>
           {showModal && (
             <Modal onClose={handleClose}>
               <ExpenseForm date={date} />
             </Modal>
           )}
 
-          <div className="ml-4 mb-1 text-2xl" onClick={handleExpanding}>
+          <div
+            className="ml-4 mb-1 text-2xl cursor-pointer"
+            onClick={handleExpanding}
+          >
             {" "}
             {expanded ? <GoArrowDown /> : <GoArrowLeft />}
           </div>
