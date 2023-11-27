@@ -1,7 +1,7 @@
 import React from "react";
 
 function HomePage() {
-  return <div>Home page stuff, idk what to put there yet.</div>;
+  return <div>Login Panel/Welcome page in the near future.</div>;
 }
 
 export default HomePage;
