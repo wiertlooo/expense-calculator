@@ -11,6 +11,11 @@
       "id": 1,
       "username": "Pentos",
       "password": "pentos"
+    },
+    {
+      "username": "wiertara",
+      "password": "wiertara",
+      "id": 2
     }
   ]
 }

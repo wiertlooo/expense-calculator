@@ -1,24 +1,30 @@
 import { Formik, Field, Form } from "formik";
-import { loginUser, useFetchUsersQuery } from "../store";
-import { useDispatch, useSelector } from "react-redux";
+import { useAddUserMutation, useFetchUsersQuery } from "../store";
+import { useNavigate } from "react-router-dom";
 
 function LoginPage() {
-  const { data, error, isFetching } = useFetchUsersQuery();
-  const dispatch = useDispatch();
-  const loggedUser = useSelector((state) => state.auth.user);
+  const { data, error, isFetching, refetch: fetchUsers } = useFetchUsersQuery();
+  const [addUser, { isSuccess }] = useAddUserMutation();
+  const navigate = useNavigate();
 
-  const handleSubmit = ({ login, password }) => {
+  const handleSubmit = async ({ login, password, confirmPassword }) => {
+    await fetchUsers();
+
     const user = data.find(
       (element) => element.username.toLowerCase() === login.toLowerCase()
     );
     if (user) {
-      if (user.password === password) {
-        dispatch(loginUser(user));
-      } else {
-        console.log("Password doesn't match username");
-      }
+      console.log("Username already exist, choose different one.");
     } else {
-      console.log("Username like this doesn't exist in the database.");
+      if (password === confirmPassword) {
+        await addUser({
+          username: login,
+          password,
+        });
+        navigate("/login");
+      } else {
+        console.log("Your passwords doesn't match each other.");
+      }
     }
   };
 
@@ -34,6 +40,7 @@ function LoginPage() {
           initialValues={{
             login: "",
             password: "",
+            confirmPassword: "",
           }}
           onSubmit={handleSubmit}
         >
@@ -45,6 +52,14 @@ function LoginPage() {
             <div>
               <label>Password</label>
               <Field type="password" id="password" name="password" />
+            </div>
+            <div>
+              <label>Confirm password</label>
+              <Field
+                type="password"
+                id="confirmPassword"
+                name="confirmPassword"
+              />
             </div>
             <button type="submit">Submit</button>
           </Form>
