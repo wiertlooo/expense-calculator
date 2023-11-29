@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 
 function LoginPage() {
   const { data, error, isFetching, refetch: fetchUsers } = useFetchUsersQuery();
-  const [addUser, { isSuccess }] = useAddUserMutation();
+  const [addUser] = useAddUserMutation();
   const navigate = useNavigate();
 
   const handleSubmit = async ({ login, password, confirmPassword }) => {

@@ -9,7 +9,7 @@ import { GoTrash } from "react-icons/go";
 import { useRemoveDateMutation } from "../store";
 
 function DatePanel({ date, children }) {
-  const [removeDate, results] = useRemoveDateMutation();
+  const [removeDate] = useRemoveDateMutation();
   const [expanded, setExpanded] = useState(false);
   const [showModal, setShowModal] = useState(false);
 
