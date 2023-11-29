@@ -1,11 +1,5 @@
 {
-  "expenses": [
-
-  ],
-  "dates": [
-
-  ],
-  "users": [
-
-  ]
+  "expenses": [],
+  "dates": [],
+  "users": []
 }

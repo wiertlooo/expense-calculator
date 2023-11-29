@@ -8,12 +8,22 @@ const usersApi = createApi({
   endpoints(builder) {
     return {
       fetchUsers: builder.query({
+        providesTags: (result, error) => {
+          const tags = result.map((user) => {
+            return { type: "User", id: user.id };
+          });
+          tags.push({ type: "Users" });
+          return tags;
+        },
         query: () => ({
           url: "/users",
           method: "GET",
         }),
       }),
       addUser: builder.mutation({
+        invalidatesTags: (result, error, user) => {
+          return [{ type: "User", id: user.id }];
+        },
         query: (user) => ({
           method: "POST",
           url: "/users",
@@ -23,9 +33,19 @@ const usersApi = createApi({
           },
         }),
       }),
+      removeUser: builder.mutation({
+        invalidatesTags: (result, error, user) => {
+          return [{ type: "Users" }];
+        },
+        query: (user) => ({
+          method: "DELETE",
+          url: `/users/${user.id}`,
+        }),
+      }),
     };
   },
 });
 
-export const { useAddUserMutation, useFetchUsersQuery } = usersApi;
+export const { useAddUserMutation, useFetchUsersQuery, useRemoveUserMutation } =
+  usersApi;
 export { usersApi };
