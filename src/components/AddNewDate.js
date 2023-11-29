@@ -1,11 +1,16 @@
 import { Field, Form, Formik } from "formik";
 import { useAddDateMutation } from "../store/apis/datesApi";
+import { useSelector } from "react-redux";
 
 function AddNewDate() {
   const [addDate, results] = useAddDateMutation();
+  const loggedUser = useSelector((state) => state.auth.user);
 
-  const handleSubmit = (value, { resetForm }) => {
-    addDate(value);
+  const handleSubmit = (values, { resetForm }) => {
+    addDate({
+      date: values.date,
+      userId: loggedUser.id,
+    });
     resetForm();
   };
   return (

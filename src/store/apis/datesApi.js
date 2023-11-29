@@ -15,21 +15,24 @@ const datesApi = createApi({
           tags.push({ type: "Dates" });
           return tags;
         },
-        query: () => ({
+        query: (user) => ({
           url: "/dates",
           method: "GET",
+          params: {
+            userId: user.id,
+          },
         }),
       }),
       addDate: builder.mutation({
         invalidatesTags: (result, error, expense) => {
           return [{ type: "Dates" }];
         },
-        query: (date) => ({
+        query: ({ date, userId }) => ({
           method: "POST",
           url: "/dates",
           body: {
-            id: date.id,
-            date: date.date,
+            userId,
+            date,
           },
         }),
       }),

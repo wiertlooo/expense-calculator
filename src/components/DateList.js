@@ -3,9 +3,11 @@ import { useFetchDatesQuery } from "../store";
 import ExpenseList from "./ExpenseList";
 import AddNewDate from "./AddNewDate";
 import DatePanel from "./DatePanel";
+import { useSelector } from "react-redux";
 
 function DateList() {
-  const { data, error, isFetching } = useFetchDatesQuery();
+  const loggedUser = useSelector((state) => state.auth.user);
+  const { data, error, isFetching } = useFetchDatesQuery(loggedUser);
 
   let content;
   if (isFetching) {

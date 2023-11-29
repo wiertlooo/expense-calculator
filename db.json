@@ -1,21 +1,11 @@
 {
-  "expenses": [],
+  "expenses": [
+
+  ],
   "dates": [
-    {
-      "date": "2023-11-24",
-      "id": 1
-    }
+
   ],
   "users": [
-    {
-      "id": 1,
-      "username": "Pentos",
-      "password": "pentos"
-    },
-    {
-      "username": "wiertara",
-      "password": "wiertara",
-      "id": 2
-    }
+
   ]
 }
