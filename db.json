@@ -1,5 +1,17 @@
 {
   "expenses": [],
-  "dates": [],
-  "users": []
+  "dates": [
+    {
+      "userId": 1,
+      "date": "2023-12-01",
+      "id": 1
+    }
+  ],
+  "users": [
+    {
+      "username": "wiertara",
+      "password": "wiertara",
+      "id": 1
+    }
+  ]
 }

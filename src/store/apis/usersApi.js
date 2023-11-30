@@ -22,7 +22,7 @@ const usersApi = createApi({
       }),
       addUser: builder.mutation({
         invalidatesTags: (result, error, user) => {
-          return [{ type: "User", id: user.id }];
+          return [{ type: "Users" }];
         },
         query: (user) => ({
           method: "POST",

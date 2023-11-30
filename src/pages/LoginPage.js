@@ -15,24 +15,28 @@ function LoginPage() {
       if (user.password === password) {
         dispatch(loginUser(user));
       } else {
-        console.log("Password doesn't match username");
+        alert("Password doesn't match username");
       }
     } else {
-      console.log("Username like this doesn't exist in the database.");
+      alert("Username like this doesn't exist in the database.");
     }
   };
 
   let content;
   if (loggedUser) {
-    content = <div>You are already logged in!</div>;
+    content = (
+      <div className="text-center mt-4">
+        <p>You are already logged in. Please log out before registering.</p>
+      </div>
+    );
   } else {
     if (isFetching) {
       content = <div>Loading...</div>;
     } else if (error) {
-      content = <div>Error occured when fetching users data. </div>;
+      content = <div>Error occurred when fetching users data. </div>;
     } else {
       content = (
-        <div>
+        <div className="mt-4">
           <Formik
             initialValues={{
               login: "",
@@ -40,16 +44,41 @@ function LoginPage() {
             }}
             onSubmit={handleSubmit}
           >
-            <Form>
-              <div>
-                <label>Login</label>
-                <Field type="text" id="login" name="login" />
+            <Form className="text-center">
+              <div className="mb-4">
+                <label
+                  className="block text-gray-700 text-sm font-bold mb-2"
+                  htmlFor="login"
+                >
+                  Login
+                </label>
+                <Field
+                  type="text"
+                  id="login"
+                  name="login"
+                  className="shadow appearance-none border rounded w-64 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                />
               </div>
-              <div>
-                <label>Password</label>
-                <Field type="password" id="password" name="password" />
+              <div className="mb-4">
+                <label
+                  className="block text-gray-700 text-sm font-bold mb-2"
+                  htmlFor="password"
+                >
+                  Password
+                </label>
+                <Field
+                  type="password"
+                  id="password"
+                  name="password"
+                  className="shadow appearance-none border rounded w-64 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                />
               </div>
-              <button type="submit">Submit</button>
+              <button
+                type="submit"
+                className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+              >
+                Login
+              </button>
             </Form>
           </Formik>
         </div>
